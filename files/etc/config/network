@@ -1,0 +1,45 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	list ipaddr '127.0.0.1/8'
+	
+config globals 'globals'
+	option dhcp_default_duid '0004804765d783f7435ca4312a67bfe3f361'
+	option ula_prefix 'fd81:8688:11a5::/48'
+	option packet_steering '1'
+	
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+	list ports 'usb0'
+
+config interface 'lan'
+	option device 'br-lan'
+	option proto 'static'
+	list ipaddr '192.168.1.1/24'
+	option ip6assign '60'
+
+config device
+	option name 'br-usb1'
+	option type 'bridge'
+
+config device
+	option name 'br-usb_1'
+	option type 'bridge'
+
+config interface 'modem'
+	option proto 'modemmanager'
+	option device 'qcom-soc'
+	option auth 'none'
+	option iptype 'ipv4v6'
+	option force_link '1'
+	option apn 'ctnet'
+	list allowedauth 'none'
+	option allowedmode '4g|3g|2g'
+	option preferredmode '4g'
+	option loglevel 'ERR'
+	option ip6assign '64'
+	list ip6class 'local'
+
