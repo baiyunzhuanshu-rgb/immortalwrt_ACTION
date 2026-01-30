@@ -1,9 +1,5 @@
 name: Build_XG_040G_MD
 
-permissions:
-  contents: write
-  actions: read
-
 on: 
   repository_dispatch:
   workflow_dispatch:
